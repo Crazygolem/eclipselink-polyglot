@@ -5,7 +5,7 @@
 
     <persistence-unit name="nosql-pu" transaction-type="RESOURCE_LOCAL">
 
-        <!-- Nothing -->
+        <class>entities.Many</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>
@@ -22,7 +22,6 @@
     <persistence-unit name="relational-pu" transaction-type="RESOURCE_LOCAL">
 
         <class>entities.One</class>
-        <class>entities.Many</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>
