@@ -1,11 +1,15 @@
 package entities;
 
+import org.eclipse.persistence.nosql.annotations.DataFormatType;
+import org.eclipse.persistence.nosql.annotations.NoSql;
+
 import javax.persistence.*;
 
 @Entity
+@NoSql(dataFormat = DataFormatType.MAPPED)
 public class Many {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id @GeneratedValue
+    private String id;
 
     @Basic
     private String name;
