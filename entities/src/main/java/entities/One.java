@@ -11,7 +11,7 @@ public class One {
     @Basic
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "one_id")
     private List<Many> manies;
 

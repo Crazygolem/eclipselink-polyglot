@@ -17,6 +17,8 @@ public class Main {
 
         One one = new One().setName(new Date().toString());
         em.persist(one);
+        em.flush(); // Forces generation of an ID and sets it in the entity
+        long oneId = one.getId();
 
         List<Many> manies = Arrays.asList(
                 new Many().setName("0").setOne(one),
@@ -24,13 +26,11 @@ public class Main {
                 new Many().setName("2").setOne(one)
         );
 
-        one.setManies(manies);
-        for (Many m : manies)
-            em.persist(m);
+        one.setManies(manies); // Will be persisted on flush / commit due to the `cascade` attribute of the relation
 
         em.getTransaction().commit();
-        long oneId = one.getId();
         em.close();
+
         return oneId;
     }
 
@@ -40,7 +40,7 @@ public class Main {
 
         One one = em.find(One.class, oneId);
         one.getManies().size(); // Force fetch lazy collection
-        System.out.println(one);
+        System.out.println("Read from the database:\n\t" + one);
 
         em.getTransaction().commit();
         em.close();
