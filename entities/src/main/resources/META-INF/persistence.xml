@@ -5,7 +5,7 @@
 
     <persistence-unit name="nosql-pu" transaction-type="RESOURCE_LOCAL">
 
-        <!--<class>entities.Many</class>-->
+        <!-- Nothing -->
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>
