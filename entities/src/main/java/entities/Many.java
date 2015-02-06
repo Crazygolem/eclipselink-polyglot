@@ -17,10 +17,8 @@ public class Many {
 
     public String getName() { return name; }
     public Many setName(String name) { this.name = name; return this; }
-    public One getOne() {
-        return one;
-    } public Many setOne(One one) { this.one = one; return this; }
-    // No `setOne(...)` : it should be set by the persistence provider, not the user.
+    public One getOne() { return one; }
+    public Many setOne(One one) { this.one = one; return this; }
 
     @Override
     public String toString() {
