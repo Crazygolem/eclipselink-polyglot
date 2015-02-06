@@ -34,7 +34,7 @@ public class Main {
         return oneId;
     }
 
-    private void read(long oneId) {
+    private void readOne(long oneId) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
 
@@ -46,9 +46,27 @@ public class Main {
         em.close();
     }
 
+    private void readManies(long oneId) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        One one = em.find(One.class, oneId);
+
+        List<Many> manies = em.createQuery(
+                "select m from Many m",
+                Many.class)
+                .getResultList();
+        for (Many m : manies)
+            System.out.println(m + "\t-->\t" + m.getOne());
+
+        em.getTransaction().commit();
+        em.close();
+    }
+
     public static void main(String[] args) {
         Main main = new Main();
         long id = main.create();
-        main.read(id);
+        main.readOne(id);
+        main.readManies(id);
     }
 }

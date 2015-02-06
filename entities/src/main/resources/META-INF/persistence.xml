@@ -5,6 +5,7 @@
 
     <persistence-unit name="nosql-pu" transaction-type="RESOURCE_LOCAL">
 
+        <class>entities.OneProxy</class>
         <class>entities.Many</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
